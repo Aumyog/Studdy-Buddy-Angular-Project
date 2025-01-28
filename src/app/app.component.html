@@ -1,5 +1,30 @@
-<nav class="bg-blue-500 text-white p-4 flex gap-4">
-  <a class="hover:underline" routerLink="/">Login</a>
-  <a class="hover:underline" routerLink="/study-groups">Study Groups</a>
+<!-- Navigation Bar -->
+<nav class="bg-blue-500 text-white p-4 flex justify-between items-center">
+  <!-- Left: App Title -->
+  <div class="text-lg font-bold">Study Buddy</div>
+
+  <!-- Right: Navigation Links -->
+  <div class="flex gap-4">
+    <a
+      class="hover:underline"
+      routerLink="/login"
+      routerLinkActive="font-bold underline"
+      >Login</a
+    >
+    <a
+      class="hover:underline"
+      routerLink="/study-groups"
+      routerLinkActive="font-bold underline"
+      >Study Groups</a
+    >
+    <a
+      class="hover:underline"
+      routerLink="/signup"
+      routerLinkActive="font-bold underline"
+      >Sign Up</a
+    >
+  </div>
 </nav>
+
+<!-- Main Content -->
 <router-outlet></router-outlet>
