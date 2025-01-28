@@ -1,32 +1,52 @@
-<!-- Navigation Bar -->
-<nav class="bg-blue-500 text-white p-4 flex justify-between items-center">
-  <!-- Left: App Title -->
-  <div class="text-lg font-bold">Study Buddy</div>
+<nav class="bg-black text-white shadow-md">
+  <div class="container mx-auto flex justify-between items-center py-4 px-6">
+    <!-- Left: App Logo -->
+    <div class="flex items-center gap-4">
+      <!-- Logo Icon -->
+      <div class="bg-yellow-500 text-black font-bold rounded-full w-10 h-10 flex items-center justify-center">
+        SB
+      </div>
+      <!-- Logo Text -->
+      <span class="text-2xl font-bold text-yellow-500 hover:text-white transition duration-200">
+        Study Buddy
+      </span>
+    </div>
 
-  <!-- Right: Navigation Links -->
-  <div class="flex gap-4">
-    <a
-      class="hover:underline"
-      routerLink="/login"
-      routerLinkActive="font-bold underline"
-      >Login</a
-    >
-    <a
-      class="hover:underline"
+    <!-- Right: Navigation Links -->
+    <div class="flex gap-6">
+      <a
+        class="text-gray-300 hover:text-yellow-500 text-lg transition duration-300 transform hover:scale-110"
+        routerLink="/"
+        routerLinkActive="font-bold text-yellow-500"
+        >Home</a
+      >
+      <a
+        class="text-gray-300 hover:text-yellow-500 text-lg transition duration-300 transform hover:scale-110"
+        routerLink="/login"
+        routerLinkActive="font-bold text-yellow-500"
+        >Login</a
+      >
+      <a
+        class="text-gray-300 hover:text-yellow-500 text-lg transition duration-300 transform hover:scale-110"
+        routerLink="/signup"
+        routerLinkActive="font-bold text-yellow-500"
+        >Sign Up</a
+      >
+      <a
+      class="text-gray-300 hover:text-yellow-500 text-lg transition duration-300 transform hover:scale-110"
       routerLink="/study-groups"
-      routerLinkActive="font-bold underline"
+      routerLinkActive="font-bold text-yellow-500"
       >Study Groups</a
     >
-    <a
-      class="hover:underline"
-      routerLink="/signup"
-      routerLinkActive="font-bold underline"
-      >Sign Up</a
-    >
+    </div>
   </div>
+
+
+  <!-- Bottom Divider -->
+  <div class="h-1 bg-yellow-500"></div>
 </nav>
 
-<!-- Main Content -->
-<router-outlet></router-outlet>
 
+
+<router-outlet></router-outlet>
 <app-footer></app-footer>
