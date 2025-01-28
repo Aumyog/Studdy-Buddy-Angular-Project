@@ -42,6 +42,13 @@
             <span *ngIf="loginForm.controls['password']?.errors?.['minlength']">Password must be at least 6 characters.</span>
           </div>
         </div>
+        <div class="text-center">
+          <p class="text-sm text-gray-600">
+            Don’t have an account?
+            <a routerLink="/signup" class="text-blue-500 hover:underline">Sign Up</a>
+          </p>
+        </div>
+        
   
         <!-- Submit Button -->
         <button

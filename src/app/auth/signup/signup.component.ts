@@ -12,7 +12,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 export class SignupComponent {
   onSubmit(form: NgForm) {
     if (form.valid) {
-      console.log('Sign Up Data:', form.value);
+      console.log('Sign Up Data:', form);
       // TODO: Add backend integration for signup
     } else {
       console.log('Form is invalid');
