@@ -2,6 +2,9 @@ import { NgIf } from '@angular/common';
 import { Component, NgModule } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, NgForm, NgModel, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink,RouterOutlet } from '@angular/router';
+
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -25,7 +28,8 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       console.log('Form Data:', this.loginForm.value);
       // TODO: Add authentication logic here
-    } else {
+      
+    } else 
       console.log('Form is invalid!');
     }
   }
