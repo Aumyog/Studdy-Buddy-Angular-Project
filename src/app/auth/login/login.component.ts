@@ -29,7 +29,7 @@ export class LoginComponent {
       console.log('Form Data:', this.loginForm.value);
       // TODO: Add authentication logic here
       
-    } else 
+    } else {
       console.log('Form is invalid!');
     }
   }
