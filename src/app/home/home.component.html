@@ -1,64 +1,80 @@
-<div class="text-center py-16 bg-white">
-  <!-- Welcome Message -->
-  <h1 class="text-5xl font-bold text-yellow-500 fade-in">
-    Welcome to Study Buddy
-  </h1>
-  <p class="mt-6 text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto fade-in">
-    Study Buddy is a platform designed to connect students, form study groups, 
-    and collaborate for success. Whether you need help with a tough subject or 
-    want to prepare for an exam, we've got you covered!
-  </p>
-
-  <!-- Features Section with Images -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-16">
-    <!-- Feature 1 -->
-    <div class="flex flex-col items-center fade-in" style="animation-delay: 0.2s;">
-      <div class="group overflow-hidden rounded-lg shadow-lg">
-        <img 
-          src="assets/home1.png" 
-          alt="Group Studying" 
-          class="rounded-lg w-full md:w-72 transition-transform duration-500 group-hover:scale-110"
-        />
+<div class="min-h-screen bg-gradient-to-br from-gray-900 to-black">
+  <!-- Hero Section -->
+  <div class="relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <div class="text-center">
+        <div class="flex justify-center mb-8">
+          <div class="bg-yellow-500 text-black font-bold rounded-full w-24 h-24 flex items-center justify-center text-3xl">
+            UW
+          </div>
+        </div>
+        <h1 class="text-4xl md:text-6xl font-extrabold text-yellow-500 mb-6">
+          UW Study Buddy
+        </h1>
+        <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+          Connect with fellow Warriors, collaborate on projects, and excel in your studies together.
+        </p>
+        <div class="flex justify-center gap-4">
+          <a routerLink="/signup" 
+             class="px-8 py-3 text-black bg-yellow-500 rounded-lg font-medium hover:bg-yellow-400 
+                    transition-all duration-300 transform hover:scale-105">
+            Get Started
+          </a>
+          <a routerLink="/login" 
+             class="px-8 py-3 text-gray-300 border-2 border-gray-300 rounded-lg font-medium 
+                    hover:text-yellow-500 hover:border-yellow-500 transition-all duration-300">
+            Sign In
+          </a>
+        </div>
       </div>
-      <p class="mt-6 text-yellow-500 text-xl font-semibold transition-transform duration-300 hover:scale-105">
-        Form Study Groups
-      </p>
-      <p class="mt-2 text-gray-600 text-sm text-center max-w-sm">
-        Easily create and join groups to study together on your favorite subjects.
-      </p>
     </div>
+  </div>
 
-    <!-- Feature 2 -->
-    <div class="flex flex-col items-center fade-in" style="animation-delay: 0.4s;">
-      <div class="group overflow-hidden rounded-lg shadow-lg">
-        <img 
-          src="assets/home2.png" 
-          alt="Online Study Session" 
-          class="rounded-lg w-full md:w-72 transition-transform duration-500 group-hover:scale-110"
-        />
+  <!-- Features Section -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div *ngFor="let feature of features" 
+           class="bg-white/10 backdrop-blur-lg p-8 rounded-xl shadow-2xl 
+                  transform hover:scale-105 transition-all duration-300">
+        <div class="text-5xl mb-4">{{ feature.icon }}</div>
+        <h3 class="text-xl font-bold text-yellow-500 mb-4">{{ feature.title }}</h3>
+        <p class="text-gray-300">{{ feature.description }}</p>
       </div>
-      <p class="mt-6 text-yellow-500 text-xl font-semibold transition-transform duration-300 hover:scale-105">
-        Collaborate Online
-      </p>
-      <p class="mt-2 text-gray-600 text-sm text-center max-w-sm">
-        Share notes, discuss topics, and participate in online study sessions.
-      </p>
     </div>
+  </div>
 
-    <!-- Feature 3 -->
-    <div class="flex flex-col items-center fade-in" style="animation-delay: 0.6s;">
-      <div class="group overflow-hidden rounded-lg shadow-lg">
-        <img 
-          src="assets/home3.png" 
-          alt="Exam Prep" 
-          class="rounded-lg w-full md:w-72 transition-transform duration-500 group-hover:scale-110"
-        />
+  <!-- Stats Section -->
+  <div class="bg-white/5 backdrop-blur-lg py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div *ngFor="let stat of stats" class="p-4">
+          <p class="text-5xl font-bold text-yellow-500 mb-2">{{ stat.number }}</p>
+          <p class="text-gray-300">{{ stat.label }}</p>
+        </div>
       </div>
-      <p class="mt-6 text-yellow-500 text-xl font-semibold transition-transform duration-300 hover:scale-105">
-        Ace Your Exams
-      </p>
-      <p class="mt-2 text-gray-600 text-sm text-center max-w-sm">
-        Use Study Buddy to prepare for exams with your peers and excel in your studies.
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
+    <h2 class="text-3xl font-bold text-yellow-500 mb-8">
+      Ready to Excel in Your Studies?
+    </h2>
+    <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+      Join UW Study Buddy today and connect with fellow students who share your academic goals.
+    </p>
+    <a routerLink="/signup" 
+       class="inline-block px-8 py-3 text-black bg-yellow-500 rounded-lg font-medium 
+              hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105">
+      Join Now
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <div class="bg-black/50 backdrop-blur-lg py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-gray-400">
+        © 2024 UW Study Buddy. All rights reserved.
       </p>
     </div>
   </div>
