@@ -1,28 +1,53 @@
-<div class="flex items-center justify-center min-h-screen bg-gray-100">
-    <div class="w-full max-w-md p-6 bg-white rounded-lg shadow-lg">
-      <h2 class="text-2xl font-semibold text-gray-700 text-center">Sign Up</h2>
-      <form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)" class="mt-6 space-y-4">
-        <!-- Name Field -->
-        <div>
-          <label for="name" class="block text-sm font-medium text-gray-600">Name</label>
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-black py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full space-y-8 bg-white/10 backdrop-blur-lg p-8 rounded-xl shadow-2xl">
+    <!-- Logo and Header -->
+    <div class="text-center">
+      <div class="flex justify-center mb-4">
+        <!-- UW Shield Logo Placeholder -->
+        <div class="bg-yellow-500 text-black font-bold rounded-full w-16 h-16 flex items-center justify-center text-xl">
+          UW
+        </div>
+      </div>
+      <h2 class="text-3xl font-extrabold text-yellow-500 mb-2">
+        Join Study Buddy
+      </h2>
+      <p class="text-gray-300 text-sm">
+        Connect with fellow Warriors
+      </p>
+    </div>
+
+    <form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)" class="mt-8 space-y-6">
+      <!-- Name Field -->
+      <div>
+        <label for="name" class="block text-sm font-medium text-gray-300">
+          Full Name
+        </label>
+        <div class="mt-1">
           <input
             id="name"
             type="text"
             name="name"
             ngModel
             required
-            class="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
-            placeholder="Enter your name"
+            class="appearance-none relative block w-full px-4 py-3 border border-gray-600 
+            placeholder-gray-500 text-gray-200 bg-gray-800/50 rounded-lg 
+            focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent
+            transition-all duration-300"
+            placeholder="John Doe"
           />
-          <!-- Error Message -->
-          <div *ngIf="signupForm.controls['name']?.invalid && signupForm.controls['name']?.touched" class="text-sm text-red-500 mt-1">
-            <span *ngIf="signupForm.controls['name']?.errors?.['required']">Name is required.</span>
+          <div *ngIf="signupForm.controls['name']?.invalid && signupForm.controls['name']?.touched" 
+               class="text-sm text-red-400 mt-1 ml-1">
+            <span *ngIf="signupForm.controls['name']?.errors?.['required']">Name is required</span>
           </div>
         </div>
-  
-        <!-- Email Field -->
-        <div>
-          <label for="email" class="block text-sm font-medium text-gray-600">Email</label>
+      </div>
+
+      <!-- Email Field -->
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-300">
+          UWaterloo Email
+        </label>
+        <div class="mt-1">
           <input
             id="email"
             type="email"
@@ -30,19 +55,26 @@
             ngModel
             required
             email
-            class="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
-            placeholder="Enter your email"
+            class="appearance-none relative block w-full px-4 py-3 border border-gray-600 
+            placeholder-gray-500 text-gray-200 bg-gray-800/50 rounded-lg 
+            focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent
+            transition-all duration-300"
+            placeholder="name@uwaterloo.ca"
           />
-          <!-- Error Message -->
-          <div *ngIf="signupForm.controls['email']?.invalid && signupForm.controls['email']?.touched" class="text-sm text-red-500 mt-1">
-            <span *ngIf="signupForm.controls['email']?.errors?.['required']">Email is required.</span>
-            <span *ngIf="signupForm.controls['email']?.errors?.['email']">Invalid email format.</span>
+          <div *ngIf="signupForm.controls['email']?.invalid && signupForm.controls['email']?.touched" 
+               class="text-sm text-red-400 mt-1 ml-1">
+            <span *ngIf="signupForm.controls['email']?.errors?.['required']">Email is required</span>
+            <span *ngIf="signupForm.controls['email']?.errors?.['email']">Must be a valid email</span>
           </div>
         </div>
-  
-        <!-- Password Field -->
-        <div>
-          <label for="password" class="block text-sm font-medium text-gray-600">Password</label>
+      </div>
+
+      <!-- Password Field -->
+      <div>
+        <label for="password" class="block text-sm font-medium text-gray-300">
+          Password
+        </label>
+        <div class="mt-1">
           <input
             id="password"
             type="password"
@@ -50,45 +82,95 @@
             ngModel
             required
             minlength="6"
-            class="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
-            placeholder="Enter your password"
+            class="appearance-none relative block w-full px-4 py-3 border border-gray-600 
+            placeholder-gray-500 text-gray-200 bg-gray-800/50 rounded-lg 
+            focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent
+            transition-all duration-300"
+            placeholder="••••••••"
           />
-          <!-- Error Message -->
-          <div *ngIf="signupForm.controls['password']?.invalid && signupForm.controls['password']?.touched" class="text-sm text-red-500 mt-1">
-            <span *ngIf="signupForm.controls['password']?.errors?.['required']">Password is required.</span>
-            <span *ngIf="signupForm.controls['password']?.errors?.['minlength']">Password must be at least 6 characters.</span>
+          <div *ngIf="signupForm.controls['password']?.invalid && signupForm.controls['password']?.touched" 
+               class="text-sm text-red-400 mt-1 ml-1">
+            <span *ngIf="signupForm.controls['password']?.errors?.['required']">Password is required</span>
+            <span *ngIf="signupForm.controls['password']?.errors?.['minlength']">Must be at least 6 characters</span>
           </div>
         </div>
-        <!-- Confirm-->
-        <div>
-            <label for="confirmPassword" class="block text-sm font-medium text-gray-600">Confirm Password</label>
-            <input
-              id="confirmPassword"
-              type="password"
-              name="confirmPassword"
-              ngModel
-              required
-              #confirmPassword="ngModel"
-              [pattern]="signupForm.value.password"
-              class="w-full px-4 py-2 mt-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
-              placeholder="Confirm your password"
-            />
-            <!-- Error Message -->
-            <div *ngIf="confirmPassword?.invalid && confirmPassword?.touched" class="text-sm text-red-500 mt-1">
-              <span *ngIf="confirmPassword?.errors?.['required']">Confirm Password is required.</span>
-              <span *ngIf="confirmPassword?.errors?.['pattern']">Passwords do not match.</span>
-            </div>
-          </div>
-  
-        <!-- Submit Button -->
+      </div>
+
+      <!-- Program Selection -->
+      <div>
+        <label for="program" class="block text-sm font-medium text-gray-300">
+          Program
+        </label>
+        <div class="mt-1">
+          <select
+            id="program"
+            name="program"
+            ngModel
+            required
+            class="appearance-none relative block w-full px-4 py-3 border border-gray-600 
+            placeholder-gray-500 text-gray-200 bg-gray-800/50 rounded-lg 
+            focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent
+            transition-all duration-300"
+          >
+            <option value="" disabled selected>Select your program</option>
+            <option value="cs">Computer Science</option>
+            <option value="se">Software Engineering</option>
+            <option value="ece">Electrical & Computer Engineering</option>
+            <option value="math">Mathematics</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Terms and Conditions -->
+      <div class="flex items-center">
+        <input
+          id="terms"
+          name="terms"
+          type="checkbox"
+          ngModel
+          required
+          class="h-4 w-4 rounded border-gray-600 bg-gray-800/50 text-yellow-500 focus:ring-yellow-500"
+        />
+        <label for="terms" class="ml-2 block text-sm text-gray-300">
+          I agree to the 
+          <a href="#" class="text-yellow-500 hover:text-yellow-400">Terms of Service</a>
+          and
+          <a href="#" class="text-yellow-500 hover:text-yellow-400">Privacy Policy</a>
+        </label>
+      </div>
+
+      <!-- Submit Button -->
+      <div>
         <button
           type="submit"
           [disabled]="signupForm.invalid"
-          class="w-full px-4 py-2 text-white bg-yellow-500 rounded-lg hover:bg-blue-600 disabled:bg-gray-400 disabled:cursor-not-allowed"
+          class="group relative w-full flex justify-center py-3 px-4 border border-transparent 
+          text-sm font-medium rounded-lg text-black bg-yellow-500 hover:bg-yellow-400 
+          focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500
+          disabled:bg-gray-600 disabled:text-gray-400 disabled:cursor-not-allowed
+          transition-all duration-300 transform hover:scale-[1.02]"
         >
-          Sign Up
+          <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+            <!-- User Plus Icon -->
+            <svg class="h-5 w-5 text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"/>
+            </svg>
+          </span>
+          Create Account
         </button>
-      </form>
-    </div>
+      </div>
+
+      <!-- Sign In Link -->
+      <div class="text-center">
+        <p class="text-sm text-gray-300">
+          Already have an account?
+          <a routerLink="/login" class="font-medium text-yellow-500 hover:text-yellow-400 transition-colors duration-300">
+            Sign in
+          </a>
+        </p>
+      </div>
+    </form>
   </div>
+</div>
   
