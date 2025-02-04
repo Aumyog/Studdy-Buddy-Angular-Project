@@ -1,16 +1,14 @@
 import { NgIf } from '@angular/common';
-import { Component, NgModule } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, NgForm, NgModel, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink,RouterOutlet } from '@angular/router';
-
-
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  imports:[NgIf,FormsModule,RouterOutlet,RouterLink]
-
+  imports: [NgIf, FormsModule, ReactiveFormsModule, RouterLink],
+  standalone: true
 })
 export class LoginComponent {
   loginForm: FormGroup;
@@ -27,8 +25,7 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       console.log('Form Data:', this.loginForm.value);
-      // TODO: Add authentication logic here
-      
+      // Handle login logic here (without Firebase)
     } else {
       console.log('Form is invalid!');
     }
