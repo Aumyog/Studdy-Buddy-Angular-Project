@@ -6,7 +6,7 @@ import { FormsModule, NgForm } from '@angular/forms';
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
-  standalone: true,
+  standalone: true
   imports: [NgIf, FormsModule],
 })
 export class SignupComponent {
@@ -15,7 +15,7 @@ export class SignupComponent {
       console.log('Sign Up Data:', form);
       // TODO: Add backend integration for signup
     } else {
-      console.log('Form is invalid');
+      console.log('Form is invalid')
     }
   }
 }
