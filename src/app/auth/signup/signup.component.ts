@@ -7,7 +7,7 @@ import { FormsModule, NgForm } from '@angular/forms';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
   standalone: true,
-  imports: [NgIf, FormsModule]
+  imports: [NgIf, FormsModule],
 })
 export class SignupComponent {
   onSubmit(form: NgForm) {
