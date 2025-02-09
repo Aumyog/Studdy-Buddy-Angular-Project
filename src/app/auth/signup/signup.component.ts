@@ -13,7 +13,7 @@ export class SignupComponent {
   onSubmit(form: NgForm) {
     if (form.valid) {
       console.log('Sign Up Data:', form);
-      // TODO: Add backend integration for signup
+      // TODO: Add backend integration for signu
     } else {
       console.log('Form is invalid')
     }
