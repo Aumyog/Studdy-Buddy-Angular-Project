@@ -23,7 +23,7 @@ export class LoginComponent {
 
   // Handle form submission
   onSubmit() {
-    if (this.loginForm.valid) {
+    if (this.loginForm.valid) 
       console.log('Form Data:', this.loginForm.value);
       // Handle login logic here (without Firebase)
     } else {
