@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NgIf } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { auth } from '../../app.config';
 
 @Component({
@@ -10,7 +10,7 @@ import { auth } from '../../app.config';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
   standalone: true,
-  imports: [NgIf, FormsModule]
+  imports: [NgIf, FormsModule,RouterLink]
 })
 export class SignupComponent {
   error: string = '';

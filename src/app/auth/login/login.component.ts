@@ -2,7 +2,7 @@ import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 @Component({
   selector: 'app-login',
@@ -24,7 +24,6 @@ export class LoginComponent {
     });
   }
 
-  
   async onSubmit() {
     console.log('Form value:', this.loginForm.value);
     console.log('Form valid:', this.loginForm.valid);
@@ -52,6 +51,19 @@ export class LoginComponent {
     }
   }
 
+  async signInWithGoogle() {
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+    try {
+      const result = await signInWithPopup(auth, provider);
+      console.log('Google sign in successful:', result.user);
+      this.router.navigate(['/study-groups']);
+    } catch (error: any) {
+      console.error('Google sign in error:', error);
+      this.handleError(error);
+    }
+  }
+
   private handleError(error: any) {
     switch (error.code) {
       case 'auth/user-not-found':
@@ -66,11 +78,17 @@ export class LoginComponent {
       case 'auth/user-disabled':
         this.error = 'This user has been disabled.';
         break;
-      case 'auth/invalid-credential':
-        this.error = 'Invalid email or password.';
+      case 'auth/popup-closed-by-user':
+        this.error = 'Sign-in popup was closed before completing.';
+        break;
+      case 'auth/cancelled-popup-request':
+        this.error = 'Another sign-in popup is already open.';
+        break;
+      case 'auth/popup-blocked':
+        this.error = 'Sign-in popup was blocked by the browser.';
         break;
       default:
-        this.error = 'An error occurred during login. Please try again.';
+        this.error = 'An error occurred during sign in. Please try again.';
     }
   }
 }
