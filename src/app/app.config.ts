@@ -6,6 +6,8 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import { initializeApp } from 'firebase/app';
 import { getAuth } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
+import {  getApps, getApp } from "firebase/app";
+import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBSOdy1HvtT0HTbmiSDVR1Xt7-M1YZqmCM",
@@ -21,7 +23,9 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const provider = new GoogleAuthProvider();
+export const db= getFirestore(app);
 export const appConfig: ApplicationConfig = {
+
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }), 
     provideRouter(routes),
