@@ -16,59 +16,54 @@
       </p>
     </div>
 
-    <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="mt-8 space-y-6">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="mt-8 space-y-6">
       <!-- Email Field -->
       <div>
-        <label for="email" class="block text-sm font-medium text-gray-300">
-          Email
-        </label>
+        <label for="email" class="block text-sm font-medium text-gray-300">Email</label>
         <div class="mt-1">
           <input
             id="email"
             type="email"
-            name="email"
-            ngModel
-            required
-            email
+            formControlName="email"
             class="appearance-none relative block w-full px-4 py-3 border border-gray-600 
             placeholder-gray-500 text-gray-200 bg-gray-800/50 rounded-lg 
             focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent
             transition-all duration-300"
             placeholder="name@uwaterloo.ca"
           />
-          <div *ngIf="loginForm.controls['email']?.invalid && loginForm.controls['email']?.touched" 
+          <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" 
                class="text-sm text-red-400 mt-1 ml-1">
-            <span *ngIf="loginForm.controls['email']?.errors?.['required']">Email is required</span>
-            <span *ngIf="loginForm.controls['email']?.errors?.['email']">Must be a valid email</span>
+            <span *ngIf="loginForm.get('email')?.errors?.['required']">Email is required</span>
+            <span *ngIf="loginForm.get('email')?.errors?.['email']">Must be a valid email</span>
           </div>
         </div>
       </div>
 
       <!-- Password Field -->
       <div>
-        <label for="password" class="block text-sm font-medium text-gray-300">
-          Password
-        </label>
+        <label for="password" class="block text-sm font-medium text-gray-300">Password</label>
         <div class="mt-1">
           <input
             id="password"
             type="password"
-            name="password"
-            ngModel
-            required
-            minlength="6"
+            formControlName="password"
             class="appearance-none relative block w-full px-4 py-3 border border-gray-600 
             placeholder-gray-500 text-gray-200 bg-gray-800/50 rounded-lg 
             focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent
             transition-all duration-300"
             placeholder="••••••••"
           />
-          <div *ngIf="loginForm.controls['password']?.invalid && loginForm.controls['password']?.touched" 
+          <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" 
                class="text-sm text-red-400 mt-1 ml-1">
-            <span *ngIf="loginForm.controls['password']?.errors?.['required']">Password is required</span>
-            <span *ngIf="loginForm.controls['password']?.errors?.['minlength']">Must be at least 6 characters</span>
+            <span *ngIf="loginForm.get('password')?.errors?.['required']">Password is required</span>
+            <span *ngIf="loginForm.get('password')?.errors?.['minlength']">Must be at least 6 characters</span>
           </div>
         </div>
+      </div>
+
+      <!-- Error Message Display -->
+      <div *ngIf="error" class="text-sm text-red-400 mt-1 ml-1">
+        {{ error }}
       </div>
 
       <!-- Remember Me & Forgot Password -->
