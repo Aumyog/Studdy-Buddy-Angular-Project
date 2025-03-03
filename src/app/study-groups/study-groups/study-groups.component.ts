@@ -1,16 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { getAuth } from 'firebase/auth';
 import { StudyGroupService } from '../../services/study-group.service';
 import { StudyGroup } from '../../models/study-group.model';
 import { CreateGroupModalComponent } from '../../components/create-group-modal/create-group-modal.component';
 import { collection, addDoc, getDocs, getDoc, doc } from "firebase/firestore";
 import { db } from '../../app.config';
+import { DeleteConfirmationModalComponent } from '../../components/delete-confirmation-modal/delete-confirmation-modal.component';
+
+
 @Component({
   selector: 'app-study-groups',
   standalone: true,
-  imports: [CommonModule, FormsModule, CreateGroupModalComponent],
+  imports: [
+    CommonModule, 
+    FormsModule, 
+    HttpClientModule,
+    CreateGroupModalComponent,
+    DeleteConfirmationModalComponent
+  ],
   templateUrl: './study-groups.component.html',
   styles: [`
     :host {
@@ -25,13 +35,17 @@ export class StudyGroupsComponent implements OnInit {
   showCreateModal: boolean = false;
   codeSearch: string = '';
   expandedGroupId: string | null = null;
+  showDeleteModal = false;
+  groupToDelete: string | null = null;
 
   constructor(private studyGroupService: StudyGroupService) {}
 
   async ngOnInit() {
     await this.loadGroups();
   }
-
+  toggleGroupExpansion(groupId: string) {
+    this.expandedGroupId = this.expandedGroupId === groupId ? null : groupId;
+  }
   async loadGroups() {
     this.userGroups = await this.studyGroupService.getUserGroups();
     this.allGroups = await this.studyGroupService.getAllGroups();
@@ -54,7 +68,11 @@ export class StudyGroupsComponent implements OnInit {
     await this.studyGroupService.joinGroup(groupId);
     await this.loadGroups();
   }
-
+  test(){
+    this.showCreateModal = true
+    console.log("test")
+    console.log(this.showCreateModal)
+  }
   async createGroup(groupData: any) {
     try {
       await this.studyGroupService.createGroup({
@@ -67,7 +85,6 @@ export class StudyGroupsComponent implements OnInit {
       console.error('Error creating group:', error);
       // You might want to add error handling/display here
     }
-  
   }
 
   async deleteGroup(groupId: string) {
@@ -77,7 +94,7 @@ export class StudyGroupsComponent implements OnInit {
         await this.loadGroups(); // Refresh the groups list
       } catch (error) {
         console.error('Error deleting group:', error);
-        // You might want to add error handling/display here
+      
       }
     }
   }
@@ -86,7 +103,29 @@ export class StudyGroupsComponent implements OnInit {
     return this.studyGroupService.isGroupCreator(group);
   }
 
-  toggleGroupExpansion(groupId: string) {
-    this.expandedGroupId = this.expandedGroupId === groupId ? null : groupId;
+  initiateDelete(groupId: string, event?: Event) {
+    if (event) {
+      event.stopPropagation();
+    }
+    this.groupToDelete = groupId;
+    this.showDeleteModal = true;
+  }
+
+  async confirmDelete() {
+    if (this.groupToDelete) {
+      try {
+        await this.studyGroupService.deleteGroup(this.groupToDelete);
+        await this.loadGroups();
+      } catch (error) {
+        console.error('Error deleting group:', error);
+      }
+    }
+    this.showDeleteModal = false;
+    this.groupToDelete = null;
+  }
+
+  cancelDelete() {
+    this.showDeleteModal = false;
+    this.groupToDelete = null;
   }
 }

@@ -9,4 +9,5 @@ export interface StudyGroup {
   createdAt: Date;
   members: string[]; // array of user emails
   capacity: number;
+  courseName: string;
 } 
