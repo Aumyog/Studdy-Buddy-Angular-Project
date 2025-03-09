@@ -1,14 +1,17 @@
 import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { Router, RouterLink} from '@angular/router';
+import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, sendPasswordResetEmail } from "firebase/auth";
+import { ForgotPasswordModalComponent } from '../forgot-password-modal/forgot-password-modal.component';
+import { MatDialog } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  imports: [NgIf, FormsModule, ReactiveFormsModule],
+  imports: [NgIf, FormsModule, ReactiveFormsModule, RouterLink],
   standalone: true
 })
 
@@ -16,7 +19,7 @@ export class LoginComponent {
   loginForm: FormGroup;
   error: string = ''; // To hold error messages
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, private dialog: MatDialog) {
     // Initialize the form
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]], // Email field with validation
@@ -62,6 +65,14 @@ export class LoginComponent {
       console.error('Google sign in error:', error);
       this.handleError(error);
     }
+  }
+
+  forgotPassword() {
+    const dialogRef = this.dialog.open(ForgotPasswordModalComponent);
+
+    dialogRef.componentInstance.close.subscribe(() => {
+      dialogRef.close();
+    });
   }
 
   private handleError(error: any) {
