@@ -31,15 +31,15 @@ ng serve
 ## 📸 Application Screenshots
 
 ### Landing Page
-![Landing Page](docs/images/r1.png)
+![Landing Page](docs/images/r3.png)
 *Welcome to Study Buddy - Your Collaborative Learning Platform*
 
 ### Study Session Interface
 ![Study Session](docs/images/r2.png)
 *Interactive Study Session Environment*
 
-### Dashboard View
-![Dashboard](docs/images/r3.png)
+### Login View
+![Dashboard](docs/images/r1.png)
 *Personalized User Dashboard*
 
 ### Features Overview
