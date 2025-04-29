@@ -34,8 +34,8 @@ export class HomeComponent {
   ];
 
   stats = [
-    { number: '500+', label: 'Active Study Groups' },
-    { number: '1000+', label: 'UW Students' },
+    { number: '10+', label: 'Active Study Groups' },
+    { number: '15+', label: 'UW Students' },
     { number: '50+', label: 'Programs Covered' }
   ];
 
