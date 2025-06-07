@@ -45,3 +45,6 @@ Thumbs.db
 .env
 /public/assets/
 
+# angular stuff:
+angular.json
+

@@ -1,6 +1,6 @@
 # Study Buddy
 
-A collaborative study platform built with Angular that helps students connect and study together effectively.
+A collaborative study platform built with Angular that helps students connect and study together effectively. Hello!
 
 ## 📋 Prerequisites
 
