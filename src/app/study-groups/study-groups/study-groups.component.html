@@ -122,7 +122,7 @@
                   <span class="font-semibold">Members:</span> {{group.members.length}}/{{group.capacity}}
                 </div>
                 <div class="text-gray-400 text-sm">
-                  <span class="font-semibold">Files:</span> 
+                  <span class="font-semibold">Files: </span> 
                 <button *ngIf="isGroupCreator(group)"
                         (click)="initiateDelete(group.id!, $event)"
                         class="mt-4 w-full px-4 py-2 bg-red-500/10 text-red-500 rounded-lg 
