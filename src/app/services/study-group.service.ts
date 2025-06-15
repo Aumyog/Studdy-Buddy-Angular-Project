@@ -83,9 +83,25 @@ export class StudyGroupService {
     await deleteDoc(doc(db, 'studyGroups', groupId));
   }
 
-  // Add this helper method to check if user is creator
+// function to upload files to the group. 
+  async filesUpload(groupId: string, files: File[]): Promise<void> {
+    const auth = getAuth();
+    const userEmail = auth.currentUser?.email;
+    const groupRef = doc(db, 'studyGroups', groupId);
+    await updateDoc(groupRef, {
+      files: files.map(file => ({
+        name: file.name,
+        size: file.size,
+        type: file.type,
+        lastModified: file.lastModified,
+        uploadedBy: userEmail,
+        uploadedAt: new Date()
+      }))
+    });
+  }
+
   isGroupCreator(group: StudyGroup): boolean {
     const auth = getAuth();
     return group.createdBy === auth.currentUser?.email;
   }
-} 
+}

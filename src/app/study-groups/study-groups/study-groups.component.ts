@@ -99,9 +99,7 @@ export class StudyGroupsComponent implements OnInit {
     }
   }
 
-  isGroupCreator(group: StudyGroup): boolean {
-    return this.studyGroupService.isGroupCreator(group);
-  }
+ 
 
   initiateDelete(groupId: string, event?: Event) {
     if (event) {
@@ -127,5 +125,9 @@ export class StudyGroupsComponent implements OnInit {
   cancelDelete() {
     this.showDeleteModal = false;
     this.groupToDelete = null;
+  }
+
+  isGroupCreator(group: StudyGroup): boolean {
+    return this.studyGroupService.isGroupCreator(group);
   }
 }
