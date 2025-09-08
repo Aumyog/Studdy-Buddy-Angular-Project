@@ -1,0 +1,11 @@
+{
+  "/api/*": {
+    "target": "https://openapi.data.uwaterloo.ca",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}

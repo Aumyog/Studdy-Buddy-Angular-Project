@@ -28,7 +28,8 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }), 
     provideRouter(routes),
-    provideClientHydration(withEventReplay()),
+    // Temporarily disable hydration to fix stability issues
+    // provideClientHydration(withEventReplay()),
     provideHttpClient()
   ]
 };

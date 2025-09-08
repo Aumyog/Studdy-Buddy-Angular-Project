@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, PLATFORM_ID, Inject } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { AuthNavComponent } from './components/auth-nav/auth-nav.component';
 
@@ -35,13 +35,18 @@ import { AuthNavComponent } from './components/auth-nav/auth-nav.component';
     <router-outlet></router-outlet>
   `
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   isAuthenticated: boolean = false;
 
-  constructor() {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-      this.isAuthenticated = !!user;
-    });
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
+  ngOnInit() {
+    // Only run Firebase auth on browser platform
+    if (isPlatformBrowser(this.platformId)) {
+      const auth = getAuth();
+      onAuthStateChanged(auth, (user) => {
+        this.isAuthenticated = !!user;
+      });
+    }
   }
 }
